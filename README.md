@@ -1,6 +1,6 @@
 # Introduction
 
-An example of how to integrate highcharts into an Angular 2 application by [Richard Natal - Bigous](https://github.com/Bigous)
+An example of how to integrate [Highcharts](http://www.highcharts.com/) into an Angular 2 application by [Richard Natal - Bigous](https://github.com/Bigous)
 
 Project setup based [angular2-seed](https://github.com/mgechev/angular2-seed.git)
 
