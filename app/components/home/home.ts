@@ -1,5 +1,6 @@
 import {Component, View, OnInit} from 'angular2/core';
-import {Ng2Highcharts} from 'ng2-highcharts/ng2-highcharts';
+import {Http} from 'angular2/http';
+import {Ng2Highcharts, Ng2Highmaps, Ng2Highstocks} from 'ng2-highcharts/ng2-highcharts';
 
 @Component({
 	selector: 'home'
@@ -7,7 +8,7 @@ import {Ng2Highcharts} from 'ng2-highcharts/ng2-highcharts';
 @View({
 	templateUrl: './components/home/home.html',
 	styleUrls: ['./components/home/home.css'],
-	directives: [Ng2Highcharts]
+	directives: [Ng2Highcharts, Ng2Highmaps, Ng2Highstocks]
 })
 export class HomeCmp implements OnInit {
 	chartOptions = {
@@ -62,6 +63,76 @@ export class HomeCmp implements OnInit {
 			}
 		]
 	};
+	chartMap = {};
+	mapData = [
+		{
+			'code': 'DE.SH',
+			'value': 728
+		},
+		{
+			'code': 'DE.BE',
+			'value': 710
+		},
+		{
+			'code': 'DE.MV',
+			'value': 963
+		},
+		{
+			'code': 'DE.HB',
+			'value': 541
+		},
+		{
+			'code': 'DE.HH',
+			'value': 622
+		},
+		{
+			'code': 'DE.RP',
+			'value': 866
+		},
+		{
+			'code': 'DE.SL',
+			'value': 398
+		},
+		{
+			'code': 'DE.BY',
+			'value': 785
+		},
+		{
+			'code': 'DE.SN',
+			'value': 223
+		},
+		{
+			'code': 'DE.ST',
+			'value': 605
+		},
+		{
+			'code': 'DE.',
+			'value': 361
+		},
+		{
+			'code': 'DE.NW',
+			'value': 237
+		},
+		{
+			'code': 'DE.BW',
+			'value': 157
+		},
+		{
+			'code': 'DE.HE',
+			'value': 134
+		},
+		{
+			'code': 'DE.NI',
+			'value': 136
+		},
+		{
+			'code': 'DE.TH',
+			'value': 704
+		}
+	];
+	chartStock = {};
+
+	constructor(private http: Http) { }
 
 	ngOnInit(): any {
 		setInterval(() => {
@@ -89,5 +160,66 @@ export class HomeCmp implements OnInit {
 					}]
 			};
 		}, 3000);
+
+		//Stock
+		this.http.get('./assets/aapl-c.json').subscribe(
+			aaplc => {
+				this.chartStock = {
+					rangeSelector: {
+						selected: 1
+					},
+					title: {
+						text: 'AAPL Stock Price'
+					},
+					series: [{
+						name: 'AAPL',
+						data: aaplc.json(),
+						tooltip: {
+							valueDecimals: 2
+						}
+					}]
+				};
+			},
+			err => {
+				console.error('Somethin went wrong', err);
+			}
+		);
+
+		//Map
+		this.http.get('./assets/geojson.json').subscribe(
+			geojson => {
+				this.chartMap = {
+					title: {
+						text: 'GeoJSON in Highmaps'
+					},
+					mapNavigation: {
+						enabled: true,
+						buttonOptions: {
+							verticalAlign: 'bottom'
+						}
+					},
+					colorAxis: {
+					},
+					series: [{
+						data: this.mapData,
+						mapData: geojson.json(),
+						joinBy: ['code_hasc', 'code'],
+						name: 'Random data',
+						states: {
+							hover: {
+								color: '#BADA55'
+							}
+						},
+						dataLabels: {
+							enabled: true,
+							format: '{point.properties.postal}'
+						}
+					}]
+				};
+			},
+			err => {
+				console.error('Somethin went wrong', err);
+			}
+		);
 	}
 }
