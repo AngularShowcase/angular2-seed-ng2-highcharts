@@ -56,7 +56,11 @@ export const NPM_DEPENDENCIES = [
 
   // JQuery and HighCharts
   { src: 'jquery/dist/jquery.js', inject: 'libs', dest: LIB_DEST },
-  { src: 'highcharts/highcharts', inject: 'libs', dest: LIB_DEST },
+  //{ src: 'highcharts/highcharts', inject: 'libs', dest: LIB_DEST }, // highstock includes highcharts
+  { src: 'highcharts/highstock', inject: 'libs', dest: LIB_DEST },
+  //{ src: 'highcharts/highmaps', inject: 'libs', dest: LIB_DEST },
+  { src: 'highcharts/modules/map', inject: 'libs', dest: LIB_DEST },
+  { src: 'highcharts/modules/data', inject: 'libs', dest: LIB_DEST },
 
   { src: 'bootstrap/dist/css/bootstrap.min.css', inject: true, dest: CSS_DEST }
 ];
