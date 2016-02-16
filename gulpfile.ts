@@ -9,6 +9,8 @@ gulp.task('clean.test',  task('clean', 'test'));
 gulp.task('clean.tmp',   task('clean', 'tmp'));
 
 gulp.task('check.versions', task('check.versions'));
+gulp.task('build.docs', task('build.docs'));
+gulp.task('serve.docs', task('serve.docs'));
 
 // --------------
 // Postinstall.
@@ -24,7 +26,8 @@ gulp.task('build.dev', done =>
               'tslint',
               'build.assets.dev',
               'build.js.dev',
-              'build.index',
+              'build.e2e_test',
+              'build.index.dev',
               done));
 
 // --------------
@@ -35,10 +38,10 @@ gulp.task('build.prod', done =>
               'tslint',
               'build.assets.prod',
               'build.html_css.prod',
-              'build.deps',
               'build.js.prod',
               'build.bundles',
-              'build.index',
+              'build.bundles.app',
+              'build.index.prod',
               done));
 
 // --------------
@@ -73,7 +76,7 @@ gulp.task('serve', done =>
 // --------------
 // Docs
 // Disabled until https://github.com/sebastian-lenz/typedoc/issues/162 gets resolved
-// gulp.task('docs', done =>
-//   runSequence('build.docs',
-//               'serve.docs',
-//               done));
+gulp.task('docs', done =>
+  runSequence('build.docs',
+              'serve.docs',
+              done));
