@@ -3,7 +3,10 @@ import {Http} from 'angular2/http';
 import {Ng2Highcharts, Ng2Highmaps, Ng2Highstocks} from 'ng2-highcharts/ng2-highcharts';
 
 @Component({
-	selector: 'home'
+  selector: 'home',
+  moduleId: module.id,
+  templateUrl: './home.html',
+  styleUrls: ['./home.css']
 })
 @View({
 	templateUrl: './home/components/home.html',
