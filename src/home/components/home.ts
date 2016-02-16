@@ -1,4 +1,4 @@
-import {Component, View, OnInit} from 'angular2/core';
+import {Component, OnInit} from 'angular2/core';
 import {Http} from 'angular2/http';
 import {Ng2Highcharts, Ng2Highmaps, Ng2Highstocks} from 'ng2-highcharts/ng2-highcharts';
 
@@ -6,12 +6,8 @@ import {Ng2Highcharts, Ng2Highmaps, Ng2Highstocks} from 'ng2-highcharts/ng2-high
   selector: 'home',
   moduleId: module.id,
   templateUrl: './home.html',
-  styleUrls: ['./home.css']
-})
-@View({
-	templateUrl: './home/components/home.html',
-	styleUrls: ['./home/components/home.css'],
-	directives: [Ng2Highcharts, Ng2Highmaps, Ng2Highstocks]
+  styleUrls: ['./home.css'],
+  directives: [Ng2Highcharts, Ng2Highmaps, Ng2Highstocks]
 })
 export class HomeCmp implements OnInit {
 	chartOptions = {
