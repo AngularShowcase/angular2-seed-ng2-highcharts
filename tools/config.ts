@@ -126,7 +126,8 @@ export const SYSTEM_BUILDER_CONFIG = {
   paths: {
     '*': `${TMP_DIR}/*`,
     'angular2/*': 'node_modules/angular2/*',
-    'rxjs/*': 'node_modules/rxjs/*'
+    'rxjs/*': 'node_modules/rxjs/*',
+    'ng2-highcharts/*': 'node_modules/ng2-highcharts/*'
   }
 };
 
