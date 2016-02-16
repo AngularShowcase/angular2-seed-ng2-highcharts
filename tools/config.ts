@@ -79,8 +79,10 @@ export const DEV_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencie
 ]);
 
 export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencies([
+  { src: 'systemjs/dist/system-polyfills.src.js', inject: 'shims' },
   { src: 'reflect-metadata/Reflect.js', inject: 'shims' },
   { src: 'es6-shim/es6-shim.min.js', inject: 'shims' },
+  { src: 'systemjs/dist/system.js', inject: 'shims' },
   { src: 'angular2/bundles/angular2-polyfills.min.js', inject: 'libs' },
   // JQuery and HighCharts
   { src: 'jquery/dist/jquery', inject: 'libs', dest: JS_DEST },
@@ -88,7 +90,7 @@ export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependenci
   { src: 'highcharts/highstock', inject: 'libs', dest: JS_DEST },
   //{ src: 'highcharts/highmaps', inject: 'libs', dest: JS_DEST },
   { src: 'highcharts/modules/map', inject: 'libs', dest: JS_DEST },
-  { src: 'highcharts/modules/data', inject: 'libs', dest: JS_DEST },
+  { src: 'highcharts/modules/data', inject: 'libs', dest: JS_DEST }
 ]);
 
 // Declare local files that needs to be injected
@@ -118,6 +120,15 @@ const SYSTEM_CONFIG_DEV = {
 };
 
 export const SYSTEM_CONFIG = SYSTEM_CONFIG_DEV;
+
+export const SYSTEM_BUILDER_CONFIG = {
+  defaultJSExtensions: true,
+  paths: {
+    '*': `${TMP_DIR}/*`,
+    'angular2/*': 'node_modules/angular2/*',
+    'rxjs/*': 'node_modules/rxjs/*'
+  }
+};
 
 // --------------
 // Private.
