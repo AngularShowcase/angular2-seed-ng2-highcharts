@@ -13,7 +13,6 @@ git clone https://github.com/AngularShowcase/angular2-seed-ng2-highcharts.git
 cd angular2-seed-ng2-highcharts
 npm install       # or `npm run reinstall` if you get an error
 npm start         # start with --env dev
-npm run docs      # api document for app
 ```
 
 # Contributing
