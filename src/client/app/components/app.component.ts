@@ -5,6 +5,7 @@ import { ToolbarComponent } from './toolbar.component';
 import { NameListService } from '../shared/index';
 import { HomeComponent } from '../+home/index';
 import { AboutComponent } from '../+about/index';
+import { ChartsCmp } from '../+charts/index';
 
 @Component({
   selector: 'sd-app',
@@ -20,6 +21,10 @@ import { AboutComponent } from '../+about/index';
   {
     path: '/about',
     component: AboutComponent
+  },
+  {
+    path: '/charts',
+    component: ChartsCmp
   }
 ])
 export class AppComponent {}

@@ -4,7 +4,7 @@ import {Ng2Highcharts, Ng2Highmaps, Ng2Highstocks} from 'ng2-highcharts/ng2-high
 
 @Component({
   selector: 'charts',
-  templateUrl: 'charts.html',
+  templateUrl: 'app/+charts/components/charts.component.html',
   directives: [Ng2Highcharts, Ng2Highmaps, Ng2Highstocks]
 })
 export class ChartsCmp implements OnInit {
@@ -150,17 +150,17 @@ export class ChartsCmp implements OnInit {
 				},
 				series: [{
 					name: 'Jane',
-					data: [Math.trunc(Math.random() * 10), Math.trunc(Math.random() * 10), Math.trunc(Math.random() * 10)]
+					data: [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)]
 				}, {
 						name: 'John',
-						data: [Math.trunc(Math.random() * 10), Math.trunc(Math.random() * 10), Math.trunc(Math.random() * 10)]
+						data: [Math.floor(Math.random() * 10), Math.floor(Math.random() * 10), Math.floor(Math.random() * 10)]
 					}]
 			};
 		}, 3000);
 
 		//Stock
 		this.http.get('./assets/aapl-c.json').subscribe(
-			aaplc => {
+			(aaplc : any) => {
 				this.chartStock = {
 					rangeSelector: {
 						selected: 1
@@ -177,14 +177,14 @@ export class ChartsCmp implements OnInit {
 					}]
 				};
 			},
-			err => {
+			(err : any) => {
 				console.error('Somethin went wrong', err);
 			}
 		);
 
 		//Map
 		this.http.get('./assets/geojson.json').subscribe(
-			geojson => {
+			(geojson : any) => {
 				this.chartMap = {
 					title: {
 						text: 'GeoJSON in Highmaps'
@@ -214,7 +214,7 @@ export class ChartsCmp implements OnInit {
 					}]
 				};
 			},
-			err => {
+			(err : any) => {
 				console.error('Somethin went wrong', err);
 			}
 		);
