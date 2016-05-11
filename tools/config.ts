@@ -70,7 +70,7 @@ export const DEV_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependencie
   { src: 'angular2/bundles/router.js', inject: 'libs', dest: JS_DEST },
   { src: 'angular2/bundles/http.js', inject: 'libs', dest: JS_DEST },
   // JQuery and HighCharts
-  { src: 'jquery/dist/jquery', inject: 'libs', dest: JS_DEST },
+  //{ src: 'jquery/dist/jquery', inject: 'libs', dest: JS_DEST },
   //{ src: 'highcharts/highcharts', inject: 'libs', dest: JS_DEST }, // highstock includes highcharts
   { src: 'highcharts/highstock', inject: 'libs', dest: JS_DEST },
   //{ src: 'highcharts/highmaps', inject: 'libs', dest: JS_DEST },
@@ -85,7 +85,7 @@ export const PROD_NPM_DEPENDENCIES: InjectableDependency[] = normalizeDependenci
   { src: 'systemjs/dist/system.js', inject: 'shims' },
   { src: 'angular2/bundles/angular2-polyfills.min.js', inject: 'libs' },
   // JQuery and HighCharts
-  { src: 'jquery/dist/jquery', inject: 'libs', dest: JS_DEST },
+  //{ src: 'jquery/dist/jquery', inject: 'libs', dest: JS_DEST },
   //{ src: 'highcharts/highcharts', inject: 'libs', dest: JS_DEST }, // highstock includes highcharts
   { src: 'highcharts/highstock', inject: 'libs', dest: JS_DEST },
   //{ src: 'highcharts/highmaps', inject: 'libs', dest: JS_DEST },
