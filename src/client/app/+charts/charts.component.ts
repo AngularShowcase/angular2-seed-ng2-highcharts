@@ -2,12 +2,19 @@ import {Component, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import {Ng2Highcharts, Ng2Highmaps, Ng2Highstocks} from 'ng2-highcharts';
 
+
 @Component({
+  moduleId: module.id,
   selector: 'charts',
-  templateUrl: 'app/+charts/components/charts.component.html',
-  directives: [Ng2Highcharts, Ng2Highmaps, Ng2Highstocks]
+  templateUrl: 'charts.component.html',
+	directives: [
+		Ng2Highcharts,
+		Ng2Highmaps,
+		Ng2Highstocks
+	]
 })
-export class ChartsCmp implements OnInit {
+
+export class ChartsComponent implements OnInit {
 	chartOptions = {
 		chart: {
 			type: 'line'
@@ -160,7 +167,7 @@ export class ChartsCmp implements OnInit {
 
 		//Stock
 		this.http.get('./assets/aapl-c.json').subscribe(
-			(aaplc : any) => {
+			(aaplc: any) => {
 				this.chartStock = {
 					rangeSelector: {
 						selected: 1
@@ -177,14 +184,14 @@ export class ChartsCmp implements OnInit {
 					}]
 				};
 			},
-			(err : any) => {
+			(err: any) => {
 				console.error('Somethin went wrong', err);
 			}
 		);
 
 		//Map
 		this.http.get('./assets/geojson.json').subscribe(
-			(geojson : any) => {
+			(geojson: any) => {
 				this.chartMap = {
 					title: {
 						text: 'GeoJSON in Highmaps'
@@ -214,7 +221,7 @@ export class ChartsCmp implements OnInit {
 					}]
 				};
 			},
-			(err : any) => {
+			(err: any) => {
 				console.error('Somethin went wrong', err);
 			}
 		);
