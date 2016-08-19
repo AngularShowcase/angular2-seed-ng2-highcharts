@@ -12,10 +12,7 @@ export class ProjectConfig extends SeedConfig {
 
   constructor() {
     super();
-<<<<<<< HEAD
     this.APP_TITLE = 'angular2-seed and ng2-highcharts example';
-    let additional_deps: InjectableDependency[] = [
-=======
     // this.APP_TITLE = 'Put name of your app here';
 
     /* Enable typeless compiler runs (faster) between typed compiler runs. */
@@ -24,7 +21,6 @@ export class ProjectConfig extends SeedConfig {
     // Add `NPM` third-party libraries to be injected/bundled.
     this.NPM_DEPENDENCIES = [
       ...this.NPM_DEPENDENCIES,
->>>>>>> 2.0.0-rc.5
       // {src: 'jquery/dist/jquery.min.js', inject: 'libs'},
       // {src: 'lodash/lodash.min.js', inject: 'libs'},
       { src: 'highcharts/highstock', inject: 'libs' },
