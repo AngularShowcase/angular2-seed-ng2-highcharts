@@ -19,6 +19,11 @@
   "exclude": [
     "node_modules",
     "dist",
+<<<<<<< HEAD
+=======
+    "typings/index.d.ts",
+    "typings/modules",
+>>>>>>> 2.0.0-rc.5
     "src"
   ],
   "compileOnSave": false
