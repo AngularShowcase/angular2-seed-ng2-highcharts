@@ -8,7 +8,7 @@ const plugins = <any>gulpLoadPlugins();
 export = () => {
   let tsProject = makeTsProject();
   let src = [
-    'typings/main.d.ts',
+    'typings/index.d.ts',
     TOOLS_DIR + '/manual_typings/**/*.d.ts',
     join(TOOLS_DIR, '**/*.ts')
   ];

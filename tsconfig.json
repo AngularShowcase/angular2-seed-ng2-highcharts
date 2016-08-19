@@ -19,8 +19,6 @@
   "exclude": [
     "node_modules",
     "dist",
-    "typings/browser.d.ts",
-    "typings/browser",
     "src"
   ],
   "compileOnSave": false
