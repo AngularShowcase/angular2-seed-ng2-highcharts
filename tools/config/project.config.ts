@@ -35,6 +35,15 @@ export class ProjectConfig extends SeedConfig {
       // {src: `${this.CSS_SRC}/path-to-lib/test-lib.css`, inject: true, vendor: false},
     ];
 
+    this.mergeObject(this.SYSTEM_BUILDER_CONFIG, {
+      packages: {
+        'ng2-highcharts': {
+          main: 'index.js',
+          defaultExtension: 'js'
+        }
+      }
+    });
+
     /* Add to or override NPM module configurations: */
     // this.mergeObject(this.PLUGIN_CONFIGS['browser-sync'], { ghostMode: false });
   }
