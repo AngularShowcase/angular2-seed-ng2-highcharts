@@ -8,7 +8,7 @@ import { routes } from './app.routes';
 
 import { AboutModule } from './about/about.module';
 import { HomeModule } from './home/home.module';
-import { ChartsModule } from './+charts/charts.module';
+import { ChartsModule } from './charts/charts.module';
 import { SharedModule } from './shared/shared.module';
 
 @NgModule({
