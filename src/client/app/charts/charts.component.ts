@@ -5,13 +5,8 @@ import {Ng2Highcharts, Ng2Highmaps, Ng2Highstocks} from 'ng2-highcharts';
 
 @Component({
   moduleId: module.id,
-  selector: 'charts',
-  templateUrl: 'charts.component.html',
-	directives: [
-		Ng2Highcharts,
-		Ng2Highmaps,
-		Ng2Highstocks
-	]
+  selector: 'sd-charts',
+  templateUrl: 'charts.component.html'
 })
 
 export class ChartsComponent implements OnInit {
