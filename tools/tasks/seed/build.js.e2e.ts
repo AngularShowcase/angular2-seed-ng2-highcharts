@@ -2,8 +2,8 @@ import * as gulp from 'gulp';
 import * as gulpLoadPlugins from 'gulp-load-plugins';
 import { join } from 'path';
 
-import { APP_DEST, APP_SRC, TOOLS_DIR } from '../../config';
-import { makeTsProject, templateLocals } from '../../utils';
+import Config from '../../config';
+import { makeTsProject, TemplateLocalsBuilder } from '../../utils';
 
 const plugins = <any>gulpLoadPlugins();
 
@@ -12,20 +12,24 @@ const plugins = <any>gulpLoadPlugins();
  * for the e2e environment.
  */
 export = () => {
-  let tsProject = makeTsProject();
+  let tsProject = makeTsProject({ target: 'es2015' }, Config.E2E_SRC);
   let src = [
-    'typings/index.d.ts',
-    TOOLS_DIR + '/manual_typings/**/*.d.ts',
-    join(APP_SRC, '**/*.ts'),
-    '!' + join(APP_SRC, '**/*.spec.ts')
+    Config.TOOLS_DIR + '/manual_typings/**/*.d.ts',
+    join(Config.E2E_SRC, '**/*.ts')
   ];
-  let result = gulp.src(src)
+  let result = gulp
+    .src(src)
     .pipe(plugins.plumber())
     .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.typescript(tsProject));
+    .pipe(tsProject());
 
   return result.js
     .pipe(plugins.sourcemaps.write())
-    .pipe(plugins.template(templateLocals()))
-    .pipe(gulp.dest(APP_DEST));
+    .pipe(
+      plugins.template(
+        new TemplateLocalsBuilder().withStringifiedSystemConfigDev().build(),
+        Config.TEMPLATE_CONFIG
+      )
+    )
+    .pipe(gulp.dest(Config.E2E_DEST));
 };

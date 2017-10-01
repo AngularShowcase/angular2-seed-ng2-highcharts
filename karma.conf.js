@@ -3,6 +3,8 @@
 'use strict';
 
 var argv = require('yargs').argv;
+var minimatch = require("minimatch");
+
 
 module.exports = function (config) {
   config.set({
@@ -20,6 +22,7 @@ module.exports = function (config) {
     files: [
       // Polyfills.
       'node_modules/core-js/client/shim.min.js',
+      'node_modules/intl/dist/Intl.min.js',
 
       'node_modules/traceur/bin/traceur.js',
 
@@ -44,16 +47,16 @@ module.exports = function (config) {
       { pattern: 'node_modules/@angular/**/*.js', included: false, watched: true },
       { pattern: 'node_modules/@angular/**/*.js.map', included: false, watched: false },
 
+      'test-config.js',
+      { pattern: 'dist/dev/system-config.js', watched: true, included: true },
+
       { pattern: 'dist/dev/**/*.js', included: false, watched: true },
       { pattern: 'dist/dev/**/*.html', included: false, watched: true, served: true },
       { pattern: 'dist/dev/**/*.css', included: false, watched: true, served: true },
-      { pattern: 'node_modules/systemjs/dist/system-polyfills.js', included: false, watched: false }, // PhantomJS2 (and possibly others) might require it
 
       // suppress annoying 404 warnings for resources, images, etc.
       { pattern: 'dist/dev/assets/**/*', watched: false, included: false, served: true },
 
-      'test-config.js',
-      'dist/dev/app/system-config.js',
       'test-main.js'
     ],
 
@@ -114,7 +117,7 @@ module.exports = function (config) {
 
     // Passing command line arguments to tests
     client: {
-      files: argv.files
+      files:  argv.files ? minimatch.makeRe(argv.files).source : null
     }
   });
 
